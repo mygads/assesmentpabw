@@ -27,24 +27,29 @@
     <button onclick="checkAvailability()">Submit</button>
 
     <script>
-        const jumlahInput = document.getElementById("jumlah").value;
-        const bukuSelected = document.getElementById("buku").value;
-        if (jumlahInput === ""){
-                alert("Jumlah tidak boleh kosong!");
-                return;
-            }
-            
-        let buku = [
-            {"nama": "sherlock", "jumlah":2},
-            {"nama": "lupin", "jumlah":2},
-            {"nama": "aladin", "jumlah":2},
-        ];
+        function checkAvailability(){
+            const jumlahInput = document.getElementById("jumlah").value;
+            const bukuSelected = document.getElementById("buku").value;
+            if (jumlahInput === ""){
+                    alert("Jumlah tidak boleh kosong!");
+                    return;
+                }
 
-        const selectedBook = buku.find(book => book.nama === bukuSelected);
+            let buku = [
+                {"nama": "sherlock", "jumlah":2},
+                {"nama": "lupin", "jumlah":2},
+                {"nama": "aladin", "jumlah":2},
+            ];
+
+            const selectedBook = buku.find(book => book.nama === bukuSelected);
             if (!selectedBook) {
                 alert("Buku tidak ditemukan!");
                 return;
             }
+            if (parseInt(jumlahInput)>selectedBook.jumlah){
+                alert("Jumlah buku tidak tersedia.!");
+            }
+        }
     </script>
 </body>
 </html>
